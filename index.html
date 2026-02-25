@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BETMAN Sports Wear — Harare Street Luxury</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0b0f;
+  --panel:#0f1117;
+  --glass:rgba(255,255,255,0.04);
+  --stroke:rgba(255,255,255,0.08);
+  --text:#e8ecf1;
+  --muted:#8a8f98;
+  --accent:#7bd3ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:radial-gradient(circle at top,#0f1720,#07080c 60%);
+  color:var(--text);
+  font-family:Inter,system-ui,Segoe UI,Arial;
+  min-height:100vh;
+}
+.dashboard{
+  max-width:1400px;
+  margin:auto;
+  padding:28px;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  gap:24px;
+}
+.header{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+}
+.logo{
+  font-family:Space Grotesk;
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:3px;
+}
+.location{font-size:12px;color:var(--muted)}
+.hero{
+  background:linear-gradient(145deg,var(--panel),#05060a);
+  border:1px solid var(--stroke);
+  border-radius:22px;
+  padding:36px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:32px;
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+.hero-left h1{
+  font-family:Space Grotesk;
+  font-size:48px;
+  line-height:1.1;
+}
+.hero-left p{
+  margin-top:16px;
+  color:var(--muted);
+  max-width:520px;
+}
+.cta-row{margin-top:28px;display:flex;gap:16px}
+.btn{
+  padding:14px 26px;
+  border-radius:14px;
+  border:1px solid var(--stroke);
+  background:var(--glass);
+  color:var(--text);
+  cursor:pointer;
+  font-weight:600;
+  text-decoration:none;
+  backdrop-filter:blur(10px);
+  transition:.3s;
+}
+.btn.primary{
+  background:linear-gradient(135deg,#7bd3ff,#4aa8ff);
+  color:#000;
+  border:none;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.panel{
+  background:var(--glass);
+  border:1px solid var(--stroke);
+  border-radius:18px;
+  padding:24px;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+}
+.panel-title{font-family:Space Grotesk;font-size:18px;margin-bottom:12px}
+.audio-wrap{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.audio-btn{
+  width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(135deg,#7bd3ff,#4aa8ff);
+  border:none;cursor:pointer;font-size:18px;font-weight:700;
+}
+.progress{
+  flex:1;height:6px;background:#111;border-radius:6px;overflow:hidden
+}
+.bar{height:100%;width:0%;background:#7bd3ff}
+.footer{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  color:var(--muted);
+  font-size:12px;
+}
+</style>
+</head>
+<body>
+<div class="dashboard">
+  <div class="header">
+    <div>
+      <div class="logo">BETMAN</div>
+      <div class="location">Demo Environment · Concept Audio Presentation · BETMAN Sports Wear</div>
+    </div>
+    <div class="btn">Demo Presentation</div>
+  </div>  <div class="hero">
+    <div class="hero-left">
+      <h1>BETMAN Demo Jingle<br>Presentation Mode</h1>
+      <p>This page is a premium demo showcase presenting a concept jingle for BETMAN Sports Wear. The sound design, layout, and experience simulate a luxury brand presentation environment inspired by high-end automotive dashboards.</p>
+      <div class="cta-row">
+        <div class="btn primary">Demo Mode Active</div>
+        <div class="btn">Concept Presentation</div>
+      </div>
+    </div><div class="panel">
+  <div class="panel-title">BETMAN Street Jingle</div>
+  <div class="audio-wrap">
+    <button class="audio-btn" id="playBtn">▶</button>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+  </div>
+  <div style="font-size:12px;color:var(--muted);margin-top:14px">Now Playing: betman.mp3</div>
+  <audio id="audio" src="betman.mp3" preload="auto"></audio>
+</div>
+
+  </div>  <div class="footer">
+    <div>© BETMAN Sports Wear · Demo Jingle Presentation · Concept UI</div>
+    <div>Powered by Street Culture</div>
+  </div>
+</div><script>
+const audio = document.getElementById('audio');
+const playBtn = document.getElementById('playBtn');
+const bar = document.getElementById('bar');
+let playing = false;
+
+playBtn.onclick = () => {
+  if(!playing){
+    audio.play();
+    playBtn.innerText = '⏸';
+    playing = true;
+  }else{
+    audio.pause();
+    playBtn.innerText = '▶';
+    playing = false;
+  }
+}
+
+audio.ontimeupdate = () => {
+  const percent = (audio.currentTime / audio.duration) * 100;
+  bar.style.width = percent + '%';
+}
+</script></body>
+</html>
